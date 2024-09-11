@@ -58,42 +58,42 @@ async function fetchApiData(url) {
   
       // Respond with dynamic HTML containing the fetched meta tags
       res.send(`
-        <!DOCTYPE html>
-        <html lang="en">
-          <head>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            
-            <!-- Dynamic Open Graph Meta Tags -->
-            <meta property="og:title" content="${title}" />
-            <meta property="og:description" content="${description}" />
-            <meta property="og:image" content="${videoUrl}" />
-            <meta property="og:url" content="${runLink}" />
-            <meta property="og:type" content="video.other" />
-            <meta property="og:video:url" content="https://www.youtube.com/embed/LadoUrASpfg" />
-            <meta property="og:video:type" content="text/html" />
-            <meta property="og:video:width" content="1280" />
-            <meta property="og:video:height" content="720" />
-            
-            <!-- Dynamic Twitter Card Meta Tags -->
-            <meta name="twitter:card" content="player" />
-            <meta name="twitter:title" content="${title}" />
-            <meta name="twitter:description" content="${description}" />
-            <meta name="twitter:image" content="${videoUrl}" />
-            <meta property="og:video" content="https://www.youtube.com/embed/LadoUrASpfg" />
-            <meta name="twitter:player:width" content="1280" />
-            <meta name="twitter:player:height" content="720" />
-  
-            <title>${title}</title>
-          </head>
-          <body>
-            <h1>${title}</h1>
-            <p>${description}</p>
-            <a href="${runLink}">View run on Speedrun.com</a>
-            <br/>
-            ${youtubeEmbedUrl ? `<iframe width="560" height="315" src="${youtubeEmbedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : ''}
-          </body>
-        </html>
+<!doctype html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+<meta charset="utf-8">
+<title>Structured video array</title>
+<meta property="og:title" content="Structured video array">
+<meta property="og:site_name" content="Open Graph protocol examples">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<link rel="canonical" href="http://examples.opengraphprotocol.us/video-array.html">
+<meta property="og:url" content="http://examples.opengraphprotocol.us/video-array.html">
+<meta property="og:image" content="http://examples.opengraphprotocol.us/media/images/50.png">
+<meta property="og:image:secure_url" content="https://d72cgtgi6hvvl.cloudfront.net/media/images/50.png">
+<meta property="og:image:width" content="50">
+<meta property="og:image:height" content="50">
+<meta property="og:image:type" content="image/png">
+<meta property="og:video" content="http://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf?src=http%3A%2F%2Fexamples.opengraphprotocol.us%2Fmedia%2Fvideo%2Ftrain.mp4">
+<meta property="og:video:secure_url" content="https://fpdownload.adobe.com/strobe/FlashMediaPlayback.swf?src=https%3A%2F%2Fd72cgtgi6hvvl.cloudfront.net%2Fmedia%2Fvideo%2Ftrain.mp4">
+<meta property="og:video:type" content="application/x-shockwave-flash">
+<meta property="og:video:width" content="472">
+<meta property="og:video:height" content="296">
+<meta property="og:video" content="http://examples.opengraphprotocol.us/media/video/train.mp4">
+<meta property="og:video:secure_url" content="https://d72cgtgi6hvvl.cloudfront.net/media/video/train.mp4">
+<meta property="og:video:type" content="video/mp4">
+<meta property="og:video:width" content="472">
+<meta property="og:video:height" content="296">
+<meta property="og:video" content="http://examples.opengraphprotocol.us/media/video/train.webm">
+<meta property="og:video:secure_url" content="https://d72cgtgi6hvvl.cloudfront.net/media/video/train.webm">
+<meta property="og:video:type" content="video/webm">
+<meta property="og:video:width" content="480">
+<meta property="og:video:height" content="320">
+</head>
+<body>
+<p>Example of basic properties with <a href="http://ogp.me/#structured">structured</a> videos in a SWF wrapper, MP4, and WebM format.</p>
+</body>
+</html>
       `);
     } catch (error) {
       console.error('Error fetching data:', error);
