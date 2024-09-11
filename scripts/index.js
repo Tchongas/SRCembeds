@@ -26,22 +26,25 @@ async function fetchApiData(url) {
       // Extract relevant IDs from run data
       const categoryId = run.category;
       const gameId = run.game;
+      const userId = run.players[0].id;
   
       // Fetch category and game data
       const categoryApiUrl = `https://www.speedrun.com/api/v1/categories/${categoryId}`;
       const gameApiUrl = `https://www.speedrun.com/api/v1/games/${gameId}`;
+      const userApiUrl = `https://www.speedrun.com/api/v1/users/${userId}`;
   
-      const [categoryData, gameData] = await Promise.all([
+      const [categoryData, gameData, userData] = await Promise.all([
         fetchApiData(categoryApiUrl),
-        fetchApiData(gameApiUrl)
+        fetchApiData(gameApiUrl),
+        fetchApiData(userApiUrl)
       ]);
   
-      if (!categoryData || !gameData) {
+      if (!categoryData || !gameData || !userData) {
         return res.status(404).send('Category or game data not found');
       }
   
       // Extract data for meta tags
-      const title = `Speedrun in ${categoryData.data.name} by Player ${run.players[0].id}`;
+      const title = `Speedrun in ${categoryData.data.name} by ${userData.data.names.international}`;
       const description = `${run.comment} - Time: ${run.times.primary} - Game: ${gameData.data.names.international}`;
       const videoUrl = run.videos?.links?.[0]?.uri || 'https://example.com/default-thumbnail.jpg';
       const runLink = run.weblink;
