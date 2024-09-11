@@ -70,21 +70,19 @@ async function fetchApiData(url) {
             <meta property="og:image" content="${videoUrl}" />
             <meta property="og:url" content="${runLink}" />
             <meta property="og:type" content="video.other" />
-  
-            <!-- Embed YouTube video in Open Graph -->
-            ${youtubeEmbedUrl ? `<meta property="og:video" content="${youtubeEmbedUrl}" />
+            <meta property="og:video:url" content="https://www.youtube.com/embed/LadoUrASpfg" />
             <meta property="og:video:type" content="text/html" />
             <meta property="og:video:width" content="1280" />
-            <meta property="og:video:height" content="720" />` : ''}
+            <meta property="og:video:height" content="720" />
             
             <!-- Dynamic Twitter Card Meta Tags -->
             <meta name="twitter:card" content="player" />
             <meta name="twitter:title" content="${title}" />
             <meta name="twitter:description" content="${description}" />
             <meta name="twitter:image" content="${videoUrl}" />
-            ${youtubeEmbedUrl ? `<meta name="twitter:player" content="${youtubeEmbedUrl}" />
+            <meta property="og:video" content="https://www.youtube.com/embed/LadoUrASpfg" />
             <meta name="twitter:player:width" content="1280" />
-            <meta name="twitter:player:height" content="720" />` : ''}
+            <meta name="twitter:player:height" content="720" />
   
             <title>${title}</title>
           </head>
