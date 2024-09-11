@@ -15,9 +15,9 @@ app.get('/:id', async (req, res) => {
 
     const run = runData.data;
 
-    const title = `Speedrun by Player ${run.players[0].id}`;
+    const title = `${run.game} ${run.category} by ${run.players[0].id}`;
     const description = `${run.comment} - Time: ${run.times.primary}`;
-    const videoUrl = run.videos?.links?.[0]?.uri || 'https://www.speedrun.com/static/user/863kp138/image.png?v=5d896ad';
+    const videoUrl = run.videos?.links?.[0]?.uri;
     const runLink = run.weblink;
 
     res.send(`
@@ -30,9 +30,11 @@ app.get('/:id', async (req, res) => {
           <!-- Dynamic Open Graph Meta Tags -->
           <meta property="og:title" content="${title}" />
           <meta property="og:description" content="${description}" />
-          <meta property="og:image" content="${videoUrl}" />
-          <meta property="og:url" content="${runLink}" />
-          <meta property="og:type" content="website" />
+          <meta property="og:type" content="video.other" />
+          <meta property="og:video" content="${videoUrl}" />
+          <meta property="og:video:type" content="text/html" />
+          <meta property="og:video:width" content="1280" />
+          <meta property="og:video:height" content="720" />
           
           <!-- Dynamic Twitter Card Meta Tags -->
           <meta name="twitter:card" content="summary_large_image" />
